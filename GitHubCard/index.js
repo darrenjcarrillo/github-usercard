@@ -3,10 +3,16 @@
            https://api.github.com/users/<your name>
 */
 
+axios.get("https://api.github.com/users/darrenjcarrillo").then(response => {
+  console.log(response);
+  response.data.forEach(item => {});
+});
+
+const entryPoint = document.querySelector(".cards");
+
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
-
    Skip to Step 3.
 */
 
@@ -53,3 +59,41 @@ const followersArray = [];
   luishrd
   bigknell
 */
+
+function GithubCard(gitInfo) {
+  //Create Element
+  newCard = document.createElement("div");
+  newImg = document.createElement("img");
+  newDiv = document.createElement("div");
+  newH3 = document.createElement("h3");
+  pUser = document.createElement("p");
+  pLocation = document.createElement("p");
+  pProfile = document.createElement("p");
+  linkP = document.createElement("a");
+  pFollowers = document.createElement("p");
+  pFollowing = document.createElement("p");
+  pBio = document.createElement("p");
+
+  // Class
+  newCard.classList.add("card");
+  newDiv.classList.add("card-info");
+  newH3.classList.add("name");
+  pUser.classList.add("username");
+
+  // Append
+  newCard.appendChild(newImg);
+  newCard.appendChild(newDiv);
+  newDiv.appendChild(newH3);
+  newDiv.appendChild(pUser);
+  newDiv.appendChild(pLocation);
+  newDiv.appendChild(pProfile);
+  newDiv.appendChild(pFollowers);
+  newDiv.appendChild(pFollowing);
+  newDiv.appendChild(pBio);
+  pProfile.appendChild(linkP);
+
+  // Content
+  newImg.src = imgUrl;
+
+  return newCard;
+}
